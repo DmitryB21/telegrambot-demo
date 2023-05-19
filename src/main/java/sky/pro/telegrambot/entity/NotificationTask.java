@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Getter
@@ -19,7 +20,7 @@ public class NotificationTask {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "chat_id")
     private Long chatId;
@@ -31,7 +32,7 @@ public class NotificationTask {
     private String textNotification;
 
     @Column(name = "time_notification")
-    private Timestamp timeNotification;
+    private LocalDateTime timeNotification;
 
     @Override
     public boolean equals(Object o) {
