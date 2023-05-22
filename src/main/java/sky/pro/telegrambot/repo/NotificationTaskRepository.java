@@ -1,9 +1,19 @@
 package sky.pro.telegrambot.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import sky.pro.telegrambot.entity.NotificationTask;
+import org.springframework.stereotype.Repository;
+import sky.pro.telegrambot.model.NotificationTask;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+@Repository
 public interface NotificationTaskRepository extends JpaRepository<NotificationTask, Long> {
+
+    List<NotificationTask> findNotificationTaskByTimeNotification(LocalDateTime local);
+
+
 
 
 }
