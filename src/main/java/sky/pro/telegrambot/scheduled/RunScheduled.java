@@ -1,6 +1,5 @@
 package sky.pro.telegrambot.scheduled;
 
-import com.pengrad.telegrambot.TelegramBot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -11,20 +10,12 @@ import sky.pro.telegrambot.repo.NotificationTaskRepository;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class RunScheduled {
 
     @Autowired
     TelegramBotUpdatesListener telegramBotUpdatesListener;
-
-    private final TelegramBot telegramBot;
-
-    public RunScheduled(TelegramBot telegramBot) {
-        this.telegramBot = telegramBot;
-    }
 
     @Autowired
     private NotificationTaskRepository notificationTaskRepository;
@@ -40,6 +31,5 @@ public class RunScheduled {
             String sendMessage = notificationTask.getTimeNotification() + " " + notificationTask.getTextNotification();
             telegramBotUpdatesListener.sendMessage(notificationTask.getChatId(), sendMessage);
         }
-
     }
 }
